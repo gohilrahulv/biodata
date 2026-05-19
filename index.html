@@ -4,26 +4,31 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Rahul Gohil - Biodata</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
 :root {
   --maroon: #7B1818;
   --maroon-dark: #5a1010;
+  --maroon-mid: #8e1f1f;
   --gold: #C8972A;
   --gold-light: #f0d88a;
+  --gold-pale: #fdf3dc;
   --cream: #FDF8F0;
   --cream-dark: #F5ECD8;
-  --text: #2A2118;
+  --text: #1e160f;
   --muted: #7a6a5a;
-  --border: #E8D8C0;
+  --border: #E0C89A;
   --white: #ffffff;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  font-family: 'DM Sans', sans-serif;
-  background: #EDE5D8;
+  font-family: 'Jost', sans-serif;
+  background: #d9cbbf;
+  background-image:
+    radial-gradient(ellipse at 20% 20%, rgba(123,24,24,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 80%, rgba(200,151,42,0.08) 0%, transparent 60%);
   min-height: 100vh;
   color: var(--text);
 }
@@ -35,8 +40,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
   flex-wrap: wrap;
+  gap: 8px;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -46,220 +51,319 @@ body {
   color: #fff;
   border: none;
   border-radius: 6px;
-  padding: 7px 16px;
+  padding: 8px 18px;
   font-size: 12px;
   font-weight: 600;
   cursor: pointer;
   display: flex;
   align-items: center;
   gap: 6px;
+  font-family: 'Jost', sans-serif;
+  letter-spacing: 0.5px;
   transition: background 0.2s;
-  font-family: 'DM Sans', sans-serif;
 }
 .btn:hover { background: #a87820; }
 
 /* ── PAGE WRAPPER ── */
 .page-outer {
-  max-width: 860px;
-  margin: 24px auto;
-  padding: 0 16px 40px;
+  max-width: 900px;
+  margin: 28px auto;
+  padding: 0 16px 48px;
 }
 
 /* ── BIODATA CARD ── */
 .card {
   background: var(--white);
-  border-radius: 12px;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 12px 60px rgba(80,20,20,0.15);
+  box-shadow: 0 20px 80px rgba(60,15,15,0.22), 0 2px 8px rgba(0,0,0,0.1);
   position: relative;
 }
-.card::before, .card::after {
+
+/* Corner ornaments */
+.card::before, .card::after,
+.corner-bl, .corner-br {
   content: '';
   position: absolute;
-  width: 70px;
-  height: 70px;
+  width: 50px;
+  height: 50px;
   border-color: var(--gold);
   border-style: solid;
-  z-index: 2;
+  z-index: 10;
+  pointer-events: none;
 }
-.card::before { top: 8px; left: 8px; border-width: 2px 0 0 2px; border-radius: 4px 0 0 0; }
-.card::after  { top: 8px; right: 8px; border-width: 2px 2px 0 0; border-radius: 0 4px 0 0; }
-.card-inner { position: relative; }
-.card-inner::before, .card-inner::after {
-  content: '';
-  position: absolute;
-  width: 70px;
-  height: 70px;
-  border-color: var(--gold);
-  border-style: solid;
-  z-index: 2;
-  bottom: 8px;
-}
-.card-inner::before { left: 8px; border-width: 0 0 2px 2px; border-radius: 0 0 0 4px; }
-.card-inner::after  { right: 8px; border-width: 0 2px 2px 0; border-radius: 0 0 4px 0; }
+.card::before { top: 10px; left: 10px; border-width: 2px 0 0 2px; border-radius: 3px 0 0 0; }
+.card::after  { top: 10px; right: 10px; border-width: 2px 2px 0 0; border-radius: 0 3px 0 0; }
+.corner-bl    { bottom: 10px; left: 10px; border-width: 0 0 2px 2px; border-radius: 0 0 0 3px; }
+.corner-br    { bottom: 10px; right: 10px; border-width: 0 2px 2px 0; border-radius: 0 0 3px 0; }
 
 /* ── HEADER ── */
 .header {
-  background: linear-gradient(160deg, #7B1818 0%, #9E2020 50%, #7B1818 100%);
-  padding: 32px 30px 24px;
+  background: linear-gradient(160deg, #6a1212 0%, #8e2020 45%, #6a1212 100%);
+  padding: 36px 36px 0;
+  position: relative;
+  overflow: hidden;
 }
-.header::after {
-  content: '';
-  display: block;
-  height: 3px;
-  background: linear-gradient(90deg, transparent 0%, var(--gold) 30%, var(--gold-light) 50%, var(--gold) 70%, transparent 100%);
-  margin-top: 24px;
-}
-.om { text-align: center; font-size: 28px; color: var(--gold); margin-bottom: 10px; letter-spacing: 8px; }
 
-/* Desktop header: photos on sides, name center */
+/* Subtle mandala-like rings in background */
+.header::before {
+  content: '';
+  position: absolute;
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  border: 1px solid rgba(200,151,42,0.12);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.gold-rule {
+  height: 3px;
+  background: linear-gradient(90deg, transparent 0%, var(--gold) 20%, var(--gold-light) 50%, var(--gold) 80%, transparent 100%);
+  margin-top: 30px;
+}
+
+.om {
+  text-align: center;
+  font-size: 30px;
+  color: var(--gold);
+  margin-bottom: 12px;
+  letter-spacing: 10px;
+  font-family: 'Cormorant Garamond', serif;
+  animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn { from { opacity:0; transform: translateY(-8px);} to { opacity:1; transform: none;} }
+
+/* header layout: photos BIG on sides, name center */
 .header-flex {
   display: flex;
-  align-items: center;
-  gap: 24px;
+  align-items: flex-end;
+  gap: 28px;
   justify-content: center;
 }
+
+/* LARGE PHOTO */
 .photo-slot {
-  width: 100px;
-  height: 118px;
-  border: 2px solid var(--gold);
-  border-radius: 8px;
+  width: 150px;
+  height: 190px;
+  border: 3px solid var(--gold);
+  border-bottom: none;
+  border-radius: 10px 10px 0 0;
   overflow: hidden;
   flex-shrink: 0;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  position: relative;
+  background: var(--maroon-dark);
 }
-.photo-slot img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.header-center { flex: 1; text-align: center; min-width: 0; }
+.photo-slot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+/* Photo label below photo */
+.photo-label {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: linear-gradient(transparent, rgba(90,16,16,0.85));
+  color: var(--gold-light);
+  text-align: center;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  padding: 16px 4px 4px;
+  text-transform: uppercase;
+}
+
+.header-center {
+  flex: 1;
+  text-align: center;
+  padding-bottom: 8px;
+  min-width: 0;
+}
+.name-sub {
+  color: var(--gold-light);
+  font-family: 'Jost', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  opacity: 0.85;
+}
 .name {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(24px, 5vw, 38px);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(30px, 5vw, 46px);
   color: var(--white);
   font-weight: 700;
   line-height: 1.1;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+}
+.name-divider {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+  margin: 12px 0 8px;
+}
+.name-divider span { width: 40px; height: 1px; background: var(--gold); display: block; }
+.name-divider i { color: var(--gold); font-size: 12px; font-style: normal; }
+
+.tagline {
+  color: rgba(255,255,255,0.6);
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  font-weight: 300;
 }
 
 /* ── BODY ── */
-.body { padding: 28px 28px 36px; }
+.body { padding: 32px 36px 40px; }
 
 /* Section heading */
-.sec-head { display: flex; align-items: center; gap: 10px; margin: 0 0 14px; }
-.sec-head-bar { width: 30px; height: 3px; background: var(--gold); border-radius: 2px; flex-shrink: 0; }
+.sec-head { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+.sec-head-dot { width: 8px; height: 8px; background: var(--gold); border-radius: 50%; flex-shrink: 0; }
 .sec-head-text {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(13px, 2.5vw, 16px);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(14px, 2.5vw, 17px);
   font-weight: 700;
   color: var(--maroon);
   text-transform: uppercase;
-  letter-spacing: 1.5px;
+  letter-spacing: 2.5px;
   white-space: nowrap;
 }
 .sec-head-line { flex: 1; height: 1px; background: linear-gradient(90deg, var(--gold), transparent); }
-.section { margin-bottom: 26px; }
+.section { margin-bottom: 28px; }
 
 /* Details grid */
 .details-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2px;
+  gap: 1px;
+  background: var(--border);
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: 10px;
   overflow: hidden;
 }
 .detail-item {
   display: flex;
-  padding: 9px 14px;
+  padding: 11px 16px;
   background: var(--white);
-  border-bottom: 1px solid var(--border);
   align-items: baseline;
   gap: 0;
-  min-width: 0; /* FIX: prevents overflow in grid children */
+  min-width: 0;
 }
-.detail-item:nth-child(odd) { background: var(--cream); }
+.detail-item:nth-child(4n+1),
+.detail-item:nth-child(4n+2) { background: var(--gold-pale); }
 .dl {
-  font-size: 11px;
+  font-size: 10.5px;
   color: var(--muted);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  min-width: 90px;
+  min-width: 96px;
   flex-shrink: 0;
 }
-.dsep { color: var(--gold); margin: 0 8px; font-weight: 700; flex-shrink: 0; }
+.dsep { color: var(--gold); margin: 0 10px; font-weight: 700; flex-shrink: 0; }
 .dv {
-  font-size: clamp(12px, 2vw, 13.5px);
+  font-size: clamp(12.5px, 2vw, 14px);
   color: var(--text);
-  /* FIX: long text breaks instead of overflowing */
+  font-weight: 500;
   overflow-wrap: break-word;
   word-break: break-word;
   min-width: 0;
 }
 
 /* Two column */
-.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 
 /* Family table */
+.fam-table-wrap { border-radius: 10px; border: 1px solid var(--border); overflow: hidden; }
 .fam-table { width: 100%; border-collapse: collapse; font-size: clamp(11px, 2vw, 13px); }
-.fam-table thead tr { background: var(--maroon); }
+.fam-table thead tr { background: linear-gradient(90deg, var(--maroon), var(--maroon-mid)); }
 .fam-table th {
   color: white;
-  padding: 10px 14px;
+  padding: 11px 16px;
   text-align: left;
   font-size: clamp(10px, 1.8vw, 11px);
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
+  font-weight: 600;
+  text-transform: uppercase;
   white-space: nowrap;
 }
 .fam-table td {
-  padding: 9px 14px;
+  padding: 10px 16px;
   border-bottom: 1px solid var(--border);
-  /* FIX: wrap long text in table cells */
   overflow-wrap: break-word;
   word-break: break-word;
+  font-size: 13px;
 }
-.fam-table tr:nth-child(even) td { background: var(--cream); }
+.fam-table tr:nth-child(even) td { background: var(--gold-pale); }
+.fam-table tr:last-child td { border-bottom: none; }
 
 /* Tags */
-.tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.tags { display: flex; flex-wrap: wrap; gap: 10px; }
 .tag {
-  background: var(--cream-dark);
-  border: 1px solid var(--gold);
+  background: linear-gradient(135deg, var(--cream-dark), var(--gold-pale));
+  border: 1.5px solid var(--gold);
   color: var(--maroon);
-  font-size: clamp(11px, 1.8vw, 12px);
-  padding: 5px 14px;
-  border-radius: 20px;
+  font-size: clamp(11px, 1.8vw, 13px);
+  padding: 6px 18px;
+  border-radius: 24px;
   font-weight: 600;
+  letter-spacing: 0.3px;
 }
 
 /* Contact */
-.contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+.contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
 .contact-card {
   background: linear-gradient(135deg, var(--cream), var(--cream-dark));
-  border: 1px solid var(--gold);
-  border-radius: 10px;
-  padding: 14px 16px;
+  border: 1.5px solid var(--gold);
+  border-radius: 12px;
+  padding: 16px 18px;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
 }
 .contact-icon {
-  width: 36px; height: 36px;
-  background: var(--maroon);
+  width: 42px; height: 42px;
+  background: linear-gradient(135deg, var(--maroon), var(--maroon-mid));
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  font-size: 15px; flex-shrink: 0;
+  font-size: 17px; flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(123,24,24,0.3);
 }
-.contact-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; }
-.contact-value { font-size: clamp(12px, 2vw, 13px); font-weight: 600; color: var(--text); overflow-wrap: break-word; word-break: break-all; }
+.contact-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; margin-bottom: 2px; }
+.contact-value { font-size: clamp(12px, 2vw, 14px); font-weight: 600; color: var(--text); overflow-wrap: break-word; word-break: break-all; }
 
 /* Divider */
-.divider { border: none; border-top: 1px solid var(--border); margin: 22px 0; }
+.divider {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border) 20%, var(--gold) 50%, var(--border) 80%, transparent);
+  margin: 26px 0;
+}
+
+/* Native place inline box */
+.native-box {
+  display: flex;
+  align-items: baseline;
+  padding: 11px 16px;
+  margin-top: 12px;
+  background: var(--gold-pale);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
 
 /* Footer */
 .footer {
-  background: var(--maroon);
-  padding: 14px 24px;
+  background: linear-gradient(90deg, var(--maroon-dark), var(--maroon), var(--maroon-dark));
+  padding: 16px 24px;
   text-align: center;
-  color: rgba(255,255,255,0.6);
-  font-size: clamp(10px, 1.8vw, 11px);
-  letter-spacing: 1px;
+  color: rgba(255,255,255,0.55);
+  font-size: 11px;
+  letter-spacing: 2px;
 }
 .footer span { color: var(--gold-light); }
 
@@ -268,108 +372,73 @@ body {
 ════════════════════════════════════ */
 @media (max-width: 600px) {
   .page-outer { padding: 0 6px 24px; margin: 8px auto; }
+  .header { padding: 20px 16px 0; }
 
-  /* -- Header: photos side by side on top, name below -- */
-  .header { padding: 20px 16px 18px; }
-  .header-flex {
-    flex-direction: column;
-    gap: 12px;
-  }
-  /* Put both photo slots in a row above the name */
-  .photo-wrapper {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    order: -1; /* always above name */
-  }
-  .photo-slot {
-    width: 90px;
-    height: 110px;
-    border-radius: 10px;
-  }
-  .header-center { width: 100%; }
-  .name { font-size: 26px; }
-  .om { font-size: 22px; letter-spacing: 5px; margin-bottom: 8px; }
+  .header-flex { flex-direction: column; align-items: center; gap: 14px; }
+  .photo-wrapper { display: flex; gap: 16px; justify-content: center; order: -1; }
+  .photo-slot { width: 130px; height: 165px; }
+  .header-center { width: 100%; padding-bottom: 6px; }
+  .name { font-size: 28px; }
+  .om { font-size: 24px; letter-spacing: 7px; }
 
-  /* -- Body padding -- */
-  .body { padding: 18px 12px 26px; }
-
-  /* -- Details grid: single column -- */
+  .body { padding: 18px 14px 28px; }
   .details-grid { grid-template-columns: 1fr; }
-  /* re-stripe correctly in 1-col */
-  .detail-item:nth-child(odd)  { background: var(--white); }
-  .detail-item:nth-child(even) { background: var(--cream); }
+  .detail-item:nth-child(4n+1),
+  .detail-item:nth-child(4n+2) { background: var(--white); }
+  .detail-item:nth-child(odd) { background: var(--gold-pale); }
+  .detail-item:nth-child(even) { background: var(--white); }
+  .dl { min-width: 80px; font-size: 10px; }
+  .dv { font-size: 13px; }
+  .detail-item { padding: 9px 12px; }
 
-  /* tighter label on small screens */
-  .dl { min-width: 78px; font-size: 10px; }
-  .dv { font-size: 12.5px; }
-  .detail-item { padding: 8px 10px; }
-
-  /* -- Two-col: stack vertically with a gold divider between -- */
   .two-col {
     grid-template-columns: 1fr;
     gap: 0;
   }
-  /* Visual separator between Education and Profession when stacked */
   .two-col .section:not(:last-child) {
-    padding-bottom: 18px;
-    margin-bottom: 18px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
     border-bottom: 1px dashed var(--gold);
   }
   .two-col .section { margin-bottom: 0; }
 
-  /* -- Family table: make scrollable, smaller text -- */
   .fam-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-  .fam-table { min-width: 380px; font-size: 12px; }
-  .fam-table th { padding: 8px 10px; font-size: 10px; }
-  .fam-table td { padding: 7px 10px; white-space: normal; }
+  .fam-table { min-width: 380px; }
+  .fam-table th { padding: 9px 10px; font-size: 10px; }
+  .fam-table td { padding: 8px 10px; }
 
-  /* -- Section title smaller -- */
-  .sec-head-text { font-size: 13px; letter-spacing: 1px; }
-  .sec-head { margin-bottom: 10px; }
-
-  /* -- Contact cards: single column -- */
   .contact-grid { grid-template-columns: 1fr; gap: 10px; }
-  .contact-card { padding: 12px 14px; }
-
-  /* -- Tags -- */
-  .tag { font-size: 11px; padding: 5px 11px; }
-
-  /* -- Misc spacing -- */
-  .section { margin-bottom: 20px; }
-  .divider { margin: 16px 0; }
+  .section { margin-bottom: 22px; }
+  .divider { margin: 18px 0; }
 }
 
-/* ════════════════════════════════════
-   TABLET  601px – 860px
-════════════════════════════════════ */
 @media (min-width: 601px) and (max-width: 860px) {
   .page-outer { padding: 0 12px 36px; }
-  .photo-slot { width: 90px; height: 108px; }
-  .body { padding: 24px 20px 32px; }
-  .dl { min-width: 82px; }
+  .photo-slot { width: 130px; height: 165px; }
+  .body { padding: 26px 22px 34px; }
 }
 
-/* Print */
 @media print {
   .topbar { display: none; }
   body { background: white; }
   .page-outer { padding: 0; margin: 0; max-width: 100%; }
   .card { box-shadow: none; border-radius: 0; }
+  .photo-slot { width: 150px !important; height: 190px !important; }
 }
 </style>
 </head>
 <body>
 
 <div class="topbar">
-  <div class="btn-group" style="display:flex;gap:8px">
-    <button class="btn" onclick="window.print()">🖨️ Print / Save PDF</button>
-  </div>
+  <div style="color:rgba(255,255,255,0.7);font-size:12px;letter-spacing:1px;">Rahul Gohil — Biodata</div>
+  <button class="btn" onclick="window.print()">🖨️ Print / Save PDF</button>
 </div>
 
 <div class="page-outer">
 <div class="card">
-<div class="card-inner">
+  <!-- Corner ornaments -->
+  <div class="corner-bl"></div>
+  <div class="corner-br"></div>
 
   <!-- HEADER -->
   <div class="header">
@@ -378,20 +447,30 @@ body {
 
       <!-- Photo 1 -->
       <div class="photo-slot" id="slot1">
-        <img src="img1.jpg" alt="Photo 1"/>
+        <img src="img1.jpg" alt="Photo 1" onerror="this.style.display='none'"/>
+        <div class="photo-label">Photo</div>
       </div>
 
       <!-- Center Text -->
       <div class="header-center">
+        <div class="name-sub">Matrimonial Biodata</div>
         <div class="name">Rahul Gohil</div>
+        <div class="name-divider">
+          <span></span>
+          <i>✦</i>
+          <span></span>
+        </div>
+        <div class="tagline">Nadoda Rajput &nbsp;·&nbsp; Gujarati</div>
       </div>
 
       <!-- Photo 2 -->
       <div class="photo-slot" id="slot2">
-        <img src="img2.jpg" alt="Photo 2"/>
+        <img src="img2.jpg" alt="Photo 2" onerror="this.style.display='none'"/>
+        <div class="photo-label">Photo</div>
       </div>
 
     </div>
+    <div class="gold-rule"></div>
   </div>
 
   <!-- BODY -->
@@ -400,17 +479,19 @@ body {
     <!-- Personal Details -->
     <div class="section">
       <div class="sec-head">
-        <div class="sec-head-bar"></div>
+        <div class="sec-head-dot"></div>
         <div class="sec-head-text">Personal Details</div>
         <div class="sec-head-line"></div>
       </div>
       <div class="details-grid">
         <div class="detail-item"><span class="dl">Full Name</span><span class="dsep">:</span><span class="dv">Rahul Vikrambhai Gohil</span></div>
-        <div class="detail-item"><span class="dl">Date of Birth</span><span class="dsep">:</span><span class="dv">4th Feb, 2002</span></div>
+        <div class="detail-item"><span class="dl">Date of Birth</span><span class="dsep">:</span><span class="dv">4th February, 2002</span></div>
         <div class="detail-item"><span class="dl">Age</span><span class="dsep">:</span><span class="dv">23 Years</span></div>
         <div class="detail-item"><span class="dl">Time of Birth</span><span class="dsep">:</span><span class="dv">07:01 AM</span></div>
         <div class="detail-item"><span class="dl">Place of Birth</span><span class="dsep">:</span><span class="dv">Babra, Gujarat</span></div>
-        <div class="detail-item"><span class="dl">Blood Group</span><span class="dsep">:</span><span class="dv">B Negative (B-)</span></div>
+        <div class="detail-item"><span class="dl">Blood Group</span><span class="dsep">:</span><span class="dv">B Negative (B−)</span></div>
+        <div class="detail-item"><span class="dl">Height</span><span class="dsep">:</span><span class="dv">5 Feet 7 Inches (170 cm)</span></div>
+        <div class="detail-item"><span class="dl">Weight</span><span class="dsep">:</span><span class="dv">~55 Kg</span></div>
         <div class="detail-item"><span class="dl">Caste</span><span class="dsep">:</span><span class="dv">Nadoda Rajput</span></div>
         <div class="detail-item"><span class="dl">Mother Tongue</span><span class="dsep">:</span><span class="dv">Gujarati</span></div>
       </div>
@@ -422,26 +503,26 @@ body {
     <div class="two-col">
       <div class="section">
         <div class="sec-head">
-          <div class="sec-head-bar"></div>
+          <div class="sec-head-dot"></div>
           <div class="sec-head-text">Education</div>
           <div class="sec-head-line"></div>
         </div>
         <div class="details-grid" style="grid-template-columns:1fr">
           <div class="detail-item"><span class="dl">Degree</span><span class="dsep">:</span><span class="dv">B.Tech (CSE)</span></div>
-          <div class="detail-item"><span class="dl">College</span><span class="dsep">:</span><span class="dv">Swarrnim Startup & Innovation University (Gandhinagar)</span></div>
+          <div class="detail-item"><span class="dl">College</span><span class="dsep">:</span><span class="dv">Swarrnim Startup & Innovation University, Gandhinagar</span></div>
           <div class="detail-item"><span class="dl">Year</span><span class="dsep">:</span><span class="dv">2019 – 2023</span></div>
           <div class="detail-item"><span class="dl">CGPA</span><span class="dsep">:</span><span class="dv">8.0 / 10</span></div>
         </div>
       </div>
       <div class="section">
         <div class="sec-head">
-          <div class="sec-head-bar"></div>
+          <div class="sec-head-dot"></div>
           <div class="sec-head-text">Profession</div>
           <div class="sec-head-line"></div>
         </div>
         <div class="details-grid" style="grid-template-columns:1fr">
           <div class="detail-item"><span class="dl">Occupation</span><span class="dsep">:</span><span class="dv">JAVA Full Stack Developer</span></div>
-          <div class="detail-item"><span class="dl">Company</span><span class="dsep">:</span><span class="dv">Cahoot Technologies Pvt. Ltd. (Ahmedabad)</span></div>
+          <div class="detail-item"><span class="dl">Company</span><span class="dsep">:</span><span class="dv">Cahoot Technologies Pvt. Ltd., Ahmedabad</span></div>
           <div class="detail-item"><span class="dl">Experience</span><span class="dsep">:</span><span class="dv">2 Years</span></div>
           <div class="detail-item"><span class="dl">Monthly Income</span><span class="dsep">:</span><span class="dv">₹23,000</span></div>
         </div>
@@ -453,12 +534,11 @@ body {
     <!-- Family Details -->
     <div class="section">
       <div class="sec-head">
-        <div class="sec-head-bar"></div>
+        <div class="sec-head-dot"></div>
         <div class="sec-head-text">Family Details</div>
         <div class="sec-head-line"></div>
       </div>
-      <!-- Added fam-table-wrap for proper mobile scroll -->
-      <div class="fam-table-wrap" style="border-radius:8px; border:1px solid var(--border)">
+      <div class="fam-table-wrap">
         <table class="fam-table">
           <thead>
             <tr>
@@ -472,10 +552,8 @@ body {
           </tbody>
         </table>
       </div>
-      <div style="margin-top:12px">
-        <div class="detail-item" style="background:var(--cream); border-radius:6px; border:1px solid var(--border)">
-          <span class="dl">Native Place</span><span class="dsep">:</span><span class="dv">Bhurakhiya, Lathi, Amreli, Gujarat</span>
-        </div>
+      <div class="native-box">
+        <span class="dl">Native Place</span><span class="dsep">:</span><span class="dv">Bhurakhiya, Lathi, Amreli, Gujarat</span>
       </div>
     </div>
 
@@ -484,7 +562,7 @@ body {
     <!-- Hobbies -->
     <div class="section">
       <div class="sec-head">
-        <div class="sec-head-bar"></div>
+        <div class="sec-head-dot"></div>
         <div class="sec-head-text">Hobbies &amp; Interests</div>
         <div class="sec-head-line"></div>
       </div>
@@ -500,7 +578,7 @@ body {
     <!-- Contact -->
     <div class="section" style="margin-bottom:0">
       <div class="sec-head">
-        <div class="sec-head-bar"></div>
+        <div class="sec-head-dot"></div>
         <div class="sec-head-text">Contact Details</div>
         <div class="sec-head-line"></div>
       </div>
@@ -530,11 +608,8 @@ body {
 
 </div>
 </div>
-</div>
 
 <script>
-// Wrap both photo slots in a .photo-wrapper div on mobile
-// so they sit side by side above the name
 function adjustLayout() {
   const flex = document.getElementById('headerFlex');
   if (!flex) return;
@@ -547,13 +622,11 @@ function adjustLayout() {
     if (!wrapper) {
       wrapper = document.createElement('div');
       wrapper.className = 'photo-wrapper';
-      // Insert wrapper before slot1
       flex.insertBefore(wrapper, slot1);
       wrapper.appendChild(slot1);
       wrapper.appendChild(slot2);
     }
   } else {
-    // On desktop: unwrap back to original positions
     let wrapper = flex.querySelector('.photo-wrapper');
     if (wrapper) {
       const center = flex.querySelector('.header-center');
