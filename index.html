@@ -337,6 +337,36 @@ body {
 .contact-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; margin-bottom: 2px; }
 .contact-value { font-size: clamp(12px, 2vw, 14px); font-weight: 600; color: var(--text); overflow-wrap: break-word; word-break: break-all; }
 
+/* Photo Gallery */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+.gallery-item {
+  border: 2px solid var(--gold);
+  border-radius: 10px;
+  overflow: hidden;
+  aspect-ratio: 3/4;
+  background: var(--cream-dark);
+  box-shadow: 0 4px 16px rgba(80,20,20,0.12);
+}
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  transition: transform 0.3s ease;
+}
+.gallery-item:hover img { transform: scale(1.03); }
+.gallery-item.img-missing { display: none; }
+
+@media (max-width: 600px) {
+  .gallery-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .gallery-grid .gallery-item:nth-child(3) { grid-column: 1 / -1; max-width: 60%; margin: 0 auto; }
+}
+
 /* Divider */
 .divider {
   border: none;
@@ -453,7 +483,7 @@ body {
 
       <!-- Center Text -->
       <div class="header-center">
-        <div class="name-sub">Matrimonial Biodata</div>
+        <!-- <div class="name-sub">Matrimonial Biodata</div> -->
         <div class="name">Rahul Gohil</div>
         <div class="name-divider">
           <span></span>
@@ -576,7 +606,7 @@ body {
     <hr class="divider"/>
 
     <!-- Contact -->
-    <div class="section" style="margin-bottom:0">
+    <div class="section">
       <div class="sec-head">
         <div class="sec-head-dot"></div>
         <div class="sec-head-text">Contact Details</div>
@@ -598,6 +628,29 @@ body {
           </div>
         </div>
       </div>
+    </div>
+
+    <hr class="divider"/>
+
+    <!-- Photo Gallery -->
+    <div class="section" style="margin-bottom:0">
+      <div class="sec-head">
+        <div class="sec-head-dot"></div>
+        <div class="sec-head-text">Photos</div>
+        <div class="sec-head-line"></div>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="img1.jpg" alt="Photo 1" onerror="this.parentElement.classList.add('img-missing')"/>
+        </div>
+        <div class="gallery-item">
+          <img src="img2.jpg" alt="Photo 2" onerror="this.parentElement.classList.add('img-missing')"/>
+        </div>
+        <div class="gallery-item">
+          <img src="img3.jpg" alt="Photo 3" onerror="this.parentElement.classList.add('img-missing')"/>
+        </div>
+      </div>
+      <p style="text-align:center;font-size:11px;color:var(--muted);margin-top:12px;letter-spacing:0.3px;">Add your photos named <strong>img1.jpg</strong>, <strong>img2.jpg</strong>, <strong>img3.jpg</strong> in the same folder.</p>
     </div>
 
   </div><!-- /body -->
